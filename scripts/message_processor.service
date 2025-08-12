@@ -1,0 +1,13 @@
+[Unit]
+Description=Message Processing Service
+After=postgresql.service
+
+[Service]
+Type=simple
+User=$(whoami)
+WorkingDirectory=/path/to/message_processing_system
+ExecStart=/usr/bin/python src/main.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
